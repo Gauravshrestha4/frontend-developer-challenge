@@ -1,0 +1,12 @@
+.header{
+    background-color: #1F2640;
+    height: 10vh;
+}
+.header img{
+    /* image 1 */
+    position: absolute;
+    width: 147px;
+    height: 45px;
+    left: 182px;
+    top: 17px;
+}
