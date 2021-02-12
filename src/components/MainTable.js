@@ -51,7 +51,7 @@ const MainTable = ({ data, setData,tableData,localeString }) => {
         )
     })
     return (
-        <div>
+        <div className="table-container">
         <table id="main-table">
         <tbody>
           <tr id="row0">

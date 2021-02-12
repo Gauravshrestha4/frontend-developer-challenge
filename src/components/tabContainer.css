@@ -16,3 +16,9 @@
     color: #83A515;
     padding-bottom: 10px;
 }
+@media only screen and (max-width :780px){
+    .tabContainer {
+        width: 30%;
+        display: flex;
+    }
+}
