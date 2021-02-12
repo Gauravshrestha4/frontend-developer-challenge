@@ -1,3 +1,40 @@
 .dashboard{
     margin: 40px 182px 74.5px 181px;
 }
+.popUp{
+    position: absolute;
+    margin: auto;
+    left: 450px;
+    top: 200px;
+    height: 400px;
+    width: 400px;
+    border:1px solid grey;
+    background:#FFF;
+}
+.popupLogo{
+    width:137px;
+    height:137px;
+}
+.popUp button{
+    border: 2px solid #181B34;
+    box-sizing: border-box;
+    color:#181B34 ;
+    margin-left: 166px;
+}
+.pricing{
+    padding-left: 20px;
+}
+@media only screen and (max-width: 1024px) {
+    .dashboard{
+        margin: 40px 24px 12px 18px;
+    }
+    .popUp{
+        position: absolute;
+        margin: auto;
+        left: 20px;
+        top: 150px;
+        height: 400px;
+        width: 320px;
+        background-color: grey;
+    }
+ }

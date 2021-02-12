@@ -1,35 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import DatePicker from "react-datepicker";
-
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types';
 import "react-datepicker/dist/react-datepicker.css";
 import './MainTable.css'
-const MainTable = ({ data, setData }) => {
+import PopUp from './PopUp';
+
+
+import file from '/public/assets/file.png'
+import calendar from '/public/assets/calendar.png'
+import stats from '/public/assets/statistics-report.png'
+const MainTable = ({ data, setData,tableData }) => {
     const [isModalOpen,setModalOpen]=useState(false)
-    const [ isDatePicker, setDatePicker ] = useState(false);
-    const toggleDatePicker = () => {
-        setDatePicker(!isDatePicker)
+    const [ datePicker, setDatePicker ] = useState({});
+    const [modalData,setModalData]=useState({})
+    const toggleDatePicker = (id) => {
+        setDatePicker({...datePicker,[id]:!datePicker[id]})
     }
     console.log('data here', data)
     const updateData = (date, rowdata) => {
         let newRowData = { ...rowdata, date:date.toDateString() };
-        console.log('data inside', data);
-        let newData = data.filter(rdata => rdata.name != newRowData.name);
-        console.log('new data',newData)
-        newData.push(newRowData);
+        let newData = tableData.filter(rdata => rdata.name != newRowData.name);
+        newData=[...newData,newRowData];
         setData(newData)
-        setDatePicker(false)
+        setDatePicker({ ...datePicker,[rowdata.id]:false})
+    }
+    const handlePricingView = (rowdata) => {
+        setModalData(rowdata);
+        setModalOpen(true);
     }
     const tableHTML = data.map((rowdata, i) => {
+        const diffTime = Math.abs(new Date() - new Date(rowdata.date));
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         return (
             <tr id={"row"+i+1}>
-                <td id={"cell-" + i + '0'}>{rowdata.date}</td>
+                <td id={"cell-" + i + '0'}>
+                    <span>{rowdata.date}</span>
+                    <span>{diffDays}</span>
+                </td>
                 <td id={"cell-" + i + '1'}>{rowdata.name}</td>
-            <td id={"cell-" + i + '2'} onClick={()=>setModalOpen(true)}>View pricing</td>
+                <td id={"cell-" + i + '2'} onClick={()=>handlePricingView(rowdata)} className="cursor">View pricing</td>
+                
                 <td id={"cell-" + i + '3'}>
-                <span><img className="icon" src="/public/assets/file.png"/> CSV</span>
-                <span><img className="icon" src="/public/assets/statistics-report.png"/>Report</span>
-                    <span><img className="icon" src="/public/assets/calendar.png" onClick={toggleDatePicker} />Schedule Again</span>
-                    {isDatePicker && <DatePicker selected={new Date()} onChange={date => updateData(date,rowdata)} />}
+                    <span><img className="icon" src={file}/> CSV</span>
+                    <span><img className="icon" src={stats}/>Report</span>
+                    <span onClick={()=>toggleDatePicker(rowdata.id)} className="cursor"><img className="icon" src={calendar}  />Schedule Again</span>
+                    {datePicker[rowdata.id] && <DatePicker selected={new Date()} onChange={date => updateData(date,rowdata)} />}
                 </td>
           </tr>
         )
@@ -42,13 +58,19 @@ const MainTable = ({ data, setData }) => {
             <td id="cell0-0">Date</td>
             <td id="cell0-1">Campaign</td>
             <td id="cell0-2">View</td>
-            <td id="cell0-3" style={{width:'30%'}}>ACTIONS</td>
+            <td id="cell0-3" style={{width:'40%'}}>ACTIONS</td>
           </tr>
           {tableHTML}
         </tbody>
-      </table>
+            </table>
+            {isModalOpen && ReactDOM.createPortal(<PopUp setModalOpen={setModalOpen} data={modalData}/>,document.getElementById('root'))}
         </div>
     )
 }
-
-export default MainTable;
+MainTable.propTypes = {
+    data: PropTypes.array,
+    setData:PropTypes.func
+}
+export default memo(MainTable, (prevProps, nextProps) => {
+    return prevProps.data==nextProps.data
+});

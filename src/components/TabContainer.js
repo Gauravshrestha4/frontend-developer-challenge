@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './tabContainer.css'
 const TabContainer = ({activeTab,setActiveTab}) => {
     return (
@@ -8,5 +10,9 @@ const TabContainer = ({activeTab,setActiveTab}) => {
             <div className={activeTab=='past' && 'active'} onClick={() => setActiveTab('past')}>Past Campaigns</div>
         </div>
     )
+}
+TabContainer.propTypes = {
+    activeTab: PropTypes.string,
+    setActiveTab:PropTypes.func
 }
 export default TabContainer;
