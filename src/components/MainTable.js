@@ -10,7 +10,7 @@ import PopUp from './PopUp';
 import file from '/public/assets/file.png'
 import calendar from '/public/assets/calendar.png'
 import stats from '/public/assets/statistics-report.png'
-const MainTable = ({ data, setData,tableData }) => {
+const MainTable = ({ data, setData,tableData,localeString }) => {
     const [isModalOpen,setModalOpen]=useState(false)
     const [ datePicker, setDatePicker ] = useState({});
     const [modalData,setModalData]=useState({})
@@ -39,12 +39,12 @@ const MainTable = ({ data, setData,tableData }) => {
                     <span>{diffDays}</span>
                 </td>
                 <td id={"cell-" + i + '1'}>{rowdata.name}</td>
-                <td id={"cell-" + i + '2'} onClick={()=>handlePricingView(rowdata)} className="cursor">View pricing</td>
+                <td id={"cell-" + i + '2'} onClick={() => handlePricingView(rowdata)} className="cursor">{localeString.viewPricing}</td>
                 
                 <td id={"cell-" + i + '3'}>
                     <span><img className="icon" src={file}/> CSV</span>
-                    <span><img className="icon" src={stats}/>Report</span>
-                    <span onClick={()=>toggleDatePicker(rowdata.id)} className="cursor"><img className="icon" src={calendar}  />Schedule Again</span>
+                    <span><img className="icon" src={stats} />{localeString.report}</span>
+                    <span onClick={() => toggleDatePicker(rowdata.id)} className="cursor"><img className="icon" src={calendar} />{localeString.schedule}</span>
                     {datePicker[rowdata.id] && <DatePicker selected={new Date()} onChange={date => updateData(date,rowdata)} />}
                 </td>
           </tr>
@@ -55,10 +55,10 @@ const MainTable = ({ data, setData,tableData }) => {
         <table id="main-table">
         <tbody>
           <tr id="row0">
-            <td id="cell0-0">Date</td>
-            <td id="cell0-1">Campaign</td>
-            <td id="cell0-2">View</td>
-            <td id="cell0-3" style={{width:'40%'}}>ACTIONS</td>
+                <td id="cell0-0">{localeString.date}</td>
+                <td id="cell0-1">{localeString.campaign}</td>
+                <td id="cell0-2">{localeString.view}</td>
+                <td id="cell0-3" style={{ width: '40%' }}>{localeString.actions}</td>
           </tr>
           {tableHTML}
         </tbody>

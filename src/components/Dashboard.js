@@ -3,7 +3,7 @@ import TabContainer from './TabContainer';
 import MainTable from './MainTable';
 import data from '../mockdata/mock'
 import './dashboard.css'
-const DashBoard = () => {
+const DashBoard = ({localeString}) => {
     //using state to store the active tab from upcoming/live/past
     let [ activeTab, setActiveTab ] = useState('upcoming')
     let [ tableData, setData ] = useState(data.data)
@@ -30,10 +30,10 @@ const DashBoard = () => {
     }
     return (
         <div className="dashBoard">
-            <h1>Manage Campaigns</h1>
+            <h1>{localeString.manage}</h1>
             
-            <TabContainer setActiveTab={setActiveTab} activeTab={activeTab}/>
-            <MainTable data={tabsData[ activeTab ]} tableData={tableData} setData={setData}/>
+            <TabContainer setActiveTab={setActiveTab} activeTab={activeTab} localeString={localeString}/>
+            <MainTable data={tabsData[ activeTab ]} tableData={tableData} setData={setData} localeString={localeString}/>
         </div>
     )
 }

@@ -10,3 +10,12 @@
     left: 182px;
     top: 17px;
 }
+.localSelector{
+    position: absolute;
+    width: 147px;
+    height: 35px;
+    right: 20px;
+    top: 17px;
+    outline: none;
+    border-radius: 5px;
+}
