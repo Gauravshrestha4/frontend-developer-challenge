@@ -3,21 +3,21 @@ import LocalizedStrings from 'react-localization';
 let localeString = new LocalizedStrings({
     en:{
         manage:"Manage Campaign",
-      live:"Live Campaign ",
-      upcoming:"Upcoming Campaign",
+        live:"Live Campaign ",
+        upcoming:"Upcoming Campaign",
         past: "Past Campaign",
         date: 'Date',
         view: 'View',
         actions: 'Actions',
         campaign: 'Campaign',
         viewPricing: 'View Pricing',
-        report: 'report',
-      schedule:'Schedule Campaign'
+        report: 'Report',
+        schedule:'Schedule Campaign'
     },
     ge: {
-      manage:"Kampagne verwalten",
-      live:"Live-Kampagne",
-      upcoming:"bevorstehende Kampagne",
+        manage:"Kampagne verwalten",
+        live:"Live-Kampagne",
+        upcoming:"bevorstehende Kampagne",
         past: "vergangene Kampagne",
         date: 'Datum',
         view: 'Aussicht',
@@ -25,7 +25,7 @@ let localeString = new LocalizedStrings({
         campaign: 'Kampagne',
         viewPricing: 'Preise anzeigen',
         report: 'Bericht',
-      schedule:'Kampagne planen'
+        schedule: 'Kampagne planen',
     }
 });
 export { localeString };

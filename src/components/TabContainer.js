@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './tabContainer.css'
+import '../assets/tabContainer.css'
 const TabContainer = ({activeTab,setActiveTab,localeString}) => {
     return (
         <div className="tabContainer">

@@ -4,12 +4,26 @@ import popUp from '/public/assets/Bitmap1.png';
 const PopUp = ({data,setModalOpen}) => {
     return (
         <div className="popUp">
-            <div style={{display:'flex'}}>
+            <div >
                 <img className="popupLogo" src={popUp} />
-                <div>{data.name}</div>
+                <span >{data.name}</span>
             </div>
             <div className="pricing">
                 <h3>Pricing</h3>
+                <ul>
+                    <li className="flex">
+                        <span >1 Week - 1 Month</span>
+                        <span>$100</span>
+                    </li>
+                    <li className="flex">
+                        <span>6 Months</span>
+                        <span>$500</span>
+                    </li>
+                    <li className="flex">
+                        <span>1 Year</span>
+                        <span>$900</span>
+                    </li>
+                </ul>
             </div>
             <button onClick={()=>setModalOpen(false)}>close</button>
         </div>

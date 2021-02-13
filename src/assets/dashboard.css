@@ -20,9 +20,39 @@
     box-sizing: border-box;
     color:#181B34 ;
     margin-left: 166px;
+    height: 48px;
+    width: 84px;
 }
 .pricing{
     padding-left: 20px;
+}
+.pricing ul{
+    margin: 0;
+    padding: 0;
+}
+/* .popUp >div{
+    display: flex;
+}
+.popUp >div> div{
+    align-self: flex-end;
+    margin-bottom:20px ;
+} */
+.flex>:first-child {
+font-weight: 400; 
+font-style: normal;
+font-size: 16px;;
+line-height: 24px;
+color:#7788A3;
+}
+.flex>:nth-child(2) {
+font-weight: 700; 
+font-style: normal;
+font-size: 16px;;
+line-height: 24px;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
 }
 @media only screen and (max-width: 1024px) {
     .dashboard{
@@ -35,6 +65,6 @@
         top: 150px;
         height: 400px;
         width: 320px;
-        background-color: grey;
+        background-color: #fff;
     }
  }
