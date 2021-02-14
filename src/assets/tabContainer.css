@@ -1,15 +1,18 @@
 .tabContainer{
     height: 38px;
-    /* display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items: center; */
+    display: flex;
+    justify-content:space-between;
+    align-items: center; 
 }
-.tabContainer div{
-    display: inline-block;
-    margin:0 20px;
+
+.tabItem{
+    padding: 10px;
+    box-sizing: border-box;
     cursor: pointer;
-    color: #556789;
+}
+.tabItem:hover {
+    color: #8ead2f;
+    border-bottom: 3px solid #8ead2f;
 }
 .active{
     border-bottom: 4px solid #83A515;
@@ -20,5 +23,8 @@
     .tabContainer {
         width: 30%;
         display: flex;
+    }
+    .tabItem {
+        font-size: 12px;
     }
 }

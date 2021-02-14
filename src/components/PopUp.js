@@ -1,35 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../assets/popup.css'
 import popUp from '/public/assets/Bitmap1.png';
-const PopUp = ({data,setModalOpen}) => {
-    return (
-        <div className="popUp">
-            <div >
-                <img className="popupLogo" src={popUp} />
-                <span >{data.name}</span>
+//declaring Popup functional component 
+const PopUp = ({ data, setModalOpen,locale }) => {
+  const { name, region, monthlyPrice, HalfYearlyPrice, yearlyPrice, popUpIcon } = data;
+  
+  return (
+        <div className="popUpContainer">
+          <div className="popupInner">
+                <div className="popupupper">
+                    <img
+                    className="popupicon"
+                    src={popUp}
+                />
+              
+                <div className="popupheadingcontainer">
+                    <div className="popupheading">{name}</div>
+                    <div className="popupcountry">{region}</div>
+                </div>
             </div>
-            <div className="pricing">
-                <h3>Pricing</h3>
-                <ul>
-                    <li className="flex">
-                        <span >1 Week - 1 Month</span>
-                        <span>$100</span>
-                    </li>
-                    <li className="flex">
-                        <span>6 Months</span>
-                        <span>$500</span>
-                    </li>
-                    <li className="flex">
-                        <span>1 Year</span>
-                        <span>$900</span>
-                    </li>
-                </ul>
+            <div className="popuppricingtext">{locale.pricing}</div>
+            <div className="popUp_pricing">
+              <div className="popUp_pricingRow">
+                <div className="popuppricingfirst">{locale.monthlyText}</div>
+                <div className="popuppricingvalue">$ {monthlyPrice}</div>
+              </div>
+              <div className="popUp_pricingRow">
+                <div className="popuppricingfirst">{locale.halfYearlyText}</div>
+                <div className="popuppricingvalue">$ {HalfYearlyPrice}</div>
+              </div>
+              <div className="popUp_pricingRow">
+                <div className="popuppricingfirst">{locale.yearlyText}</div>
+                <div className="popuppricingvalue">$ {yearlyPrice}</div>
+              </div>
             </div>
-            <button onClick={()=>setModalOpen(false)}>close</button>
+            <div className="popupbutton">
+              <div onClick={()=>setModalOpen(false)} className="popupclosebutton">
+                {locale.close}
+              </div>
+            </div>
+          </div>
         </div>
-    )
+      );
 }
+//using proptypes for props type safety(gets removed in production build)
 PopUp.propTypes = {
-    setsetModalOpenData:PropTypes.func
+    setModalOpen:PropTypes.func,
+    data:PropTypes.object
 }
 export default PopUp;

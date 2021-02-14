@@ -30,13 +30,7 @@
     margin: 0;
     padding: 0;
 }
-/* .popUp >div{
-    display: flex;
-}
-.popUp >div> div{
-    align-self: flex-end;
-    margin-bottom:20px ;
-} */
+
 .flex>:first-child {
 font-weight: 400; 
 font-style: normal;

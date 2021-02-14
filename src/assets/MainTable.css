@@ -36,6 +36,11 @@ td span img{
     line-height: 24px;
     color: #2B416C;
 }
+.rowItem{
+    padding: 0 20px;
+  align-items: center;
+  display: flex;
+}
 .emptyHeadline{
     margin: 20px auto;
     border: 1px solid #F1F1F4;
@@ -44,6 +49,22 @@ td span img{
     border-radius: 5px;
     background-color: #F1F1F4;
 }
+.rowCampaignName{
+    font-size: 12px;
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+.rowCampaignCountry {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 200;
+    color: #827e7e;
+    margin-top: 4px;
+}
+
 .campaign-status{
     color:#7788A3;
     font-family: Roboto;
@@ -75,9 +96,25 @@ text-align: center;
 span{
     margin-right: 20px;
 }
-
-@media only screen and (max-width: 1024px) {
+.rowCampaignNameWrapper{
+  margin-left: 6px;
+}
+.rowCampaignIcon {
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-size: cover;
+  }
+  
+@media only screen and (max-width: 786) {
     .table-container{
         margin-top:12px;
     }
+    .rowCampaignName{
+        font-size: 12px;
+        width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 }

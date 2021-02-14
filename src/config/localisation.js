@@ -12,7 +12,12 @@ let localeString = new LocalizedStrings({
         campaign: 'Campaign',
         viewPricing: 'View Pricing',
         report: 'Report',
-        schedule:'Schedule Campaign'
+        schedule: 'Schedule Campaign',
+        monthlyText:'1 Week-1 Month',
+        halfYearlyText:'6 Months',
+        yearlyText: '1 Year',
+        close:'Close',
+        pricing:'Pricing'
     },
     ge: {
         manage:"Kampagne verwalten",
@@ -26,6 +31,11 @@ let localeString = new LocalizedStrings({
         viewPricing: 'Preise anzeigen',
         report: 'Bericht',
         schedule: 'Kampagne planen',
+        monthlyText:'1 Woche - 1 Monat',
+        halfYearlyText:'6 Monate',
+        yearlyText:'1 Jahr',
+        close: 'schließen',
+        pricing:'Preisgestaltung'
     }
 });
 export { localeString };
