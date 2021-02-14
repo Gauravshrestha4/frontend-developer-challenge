@@ -17,7 +17,9 @@ let localeString = new LocalizedStrings({
         halfYearlyText:'6 Months',
         yearlyText: '1 Year',
         close:'Close',
-        pricing:'Pricing'
+        pricing: 'Pricing',
+        noData:'No Campaign Exist'
+        
     },
     ge: {
         manage:"Kampagne verwalten",
@@ -35,7 +37,8 @@ let localeString = new LocalizedStrings({
         halfYearlyText:'6 Monate',
         yearlyText:'1 Jahr',
         close: 'schließen',
-        pricing:'Preisgestaltung'
+        pricing: 'Preisgestaltung',
+        noData:'Es existiert keine Kampagne'
     }
 });
 export { localeString };

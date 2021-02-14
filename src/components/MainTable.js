@@ -10,7 +10,6 @@ import popUp from '/public/assets/Bitmap1.png';
 
 import '../assets/MainTable.css'
 
-
 import file from '/public/assets/file.png'
 import calendar from '/public/assets/calendar.png'
 import stats from '/public/assets/statistics-report.png';
@@ -22,9 +21,12 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
     const [ datePicker, setDatePicker ] = useState({});
     const [ popUpData, setPopUpData ] = useState({})
     
+    //logic to toggle datepicker ui 
     const toggleDatePicker = (id) => {
         setDatePicker({...datePicker,[id]:!datePicker[id]})
     }
+
+    //logic to update data on date change
     const updateData = (date, rowdata) => {
         let newRowData = { ...rowdata, createdOn: date.toDateString() };
         let newData = tableData.map((data) => {
@@ -36,12 +38,13 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
         setData(newData)
         setDatePicker({ ...datePicker,[rowdata.id]:false})
     }
+    //function to handle popup view and data
     const handlePricingView = (rowdata) => {
         setPopUpData(rowdata);
         setModalOpen(true);
     }
     //creating jsx for all the table data by mapping over it 
-    const tableHTML = data.map((rowdata, i) => {
+    const tableJSX = data.map((rowdata, i) => {
         const diffTime = (new Date(rowdata.createdOn) - new Date());
         const diffDays = Math.abs(diffTime) / (1000 * 60 * 60 * 24);
         const diffDaysRounded = diffTime>0?Math.ceil(diffDays):Math.floor(diffDays);
@@ -87,23 +90,23 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
         data?.length ?
         (<div className="table-container">
         <table id="main-table">
-        <tbody>
-          <tr id="row0">
-                <td id="cell0-0">{localeString.date}</td>
-                <td id="cell0-1">{localeString.campaign}</td>
-                <td id="cell0-2">{localeString.view}</td>
-                <td id="cell0-3" style={{ width: '40%' }}>{localeString.actions}</td>
-          </tr>
-          {tableHTML}
-        </tbody>
-                </table>
+            <tbody>
+                <tr id="row0">
+                        <td id="cell0-0">{localeString.date}</td>
+                        <td id="cell0-1">{localeString.campaign}</td>
+                        <td id="cell0-2">{localeString.view}</td>
+                        <td id="cell0-3" style={{ width: '40%' }}>{localeString.actions}</td>
+                </tr>
+                {tableJSX}
+            </tbody>
+        </table>
             
                 {isModalOpen && 
                     <Suspense fallback={<div>Loading...</div>}>
                         <PopUp setModalOpen={setModalOpen} data={popUpData} locale={localeString} />
                     </Suspense>
                 }
-            </div>) : <div className="emptyHeadline">{`No ${activeTab} Campaign exist`}</div>
+            </div>) : <div className="emptyHeadline">{localeString.noData}</div>
     )
 }
 

@@ -2,41 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/popup.css'
 import popUp from '/public/assets/Bitmap1.png';
-//declaring Popup functional component 
+//declaring popUp_ functional component 
 const PopUp = ({ data, setModalOpen,locale }) => {
-  const { name, region, monthlyPrice, HalfYearlyPrice, yearlyPrice, popUpIcon } = data;
+  const { name, region, monthlyPrice, HalfYearlyPrice, yearlyPrice } = data;
   
   return (
-        <div className="popUpContainer">
-          <div className="popupInner">
-                <div className="popupupper">
+        <div className="popUp_Container">
+          <div className="popUp_Inner">
+                <div className="popUp_upper">
                     <img
-                    className="popupicon"
+                    className="popUp_icon"
                     src={popUp}
                 />
               
-                <div className="popupheadingcontainer">
-                    <div className="popupheading">{name}</div>
-                    <div className="popupcountry">{region}</div>
+                <div className="popUp_headingcontainer">
+                    <div className="popUp_name">{name}</div>
+                    <div className="popUp_country">{region}</div>
                 </div>
             </div>
-            <div className="popuppricingtext">{locale.pricing}</div>
+            <div className="popUp_priceHeading">{locale.pricing}</div>
             <div className="popUp_pricing">
               <div className="popUp_pricingRow">
-                <div className="popuppricingfirst">{locale.monthlyText}</div>
-                <div className="popuppricingvalue">$ {monthlyPrice}</div>
+                <div className="popUp_priceText">{locale.monthlyText}</div>
+                <div className="popUp_pricingvalue">$ {monthlyPrice}</div>
               </div>
               <div className="popUp_pricingRow">
-                <div className="popuppricingfirst">{locale.halfYearlyText}</div>
-                <div className="popuppricingvalue">$ {HalfYearlyPrice}</div>
+                <div className="popUp_priceText">{locale.halfYearlyText}</div>
+                <div className="popUp_pricingvalue">$ {HalfYearlyPrice}</div>
               </div>
               <div className="popUp_pricingRow">
-                <div className="popuppricingfirst">{locale.yearlyText}</div>
-                <div className="popuppricingvalue">$ {yearlyPrice}</div>
+                <div className="popUp_priceText">{locale.yearlyText}</div>
+                <div className="popUp_pricingvalue">$ {yearlyPrice}</div>
               </div>
             </div>
-            <div className="popupbutton">
-              <div onClick={()=>setModalOpen(false)} className="popupclosebutton">
+            <div className="popUp_button">
+              <div onClick={()=>setModalOpen(false)} className="popUp_closebutton">
                 {locale.close}
               </div>
             </div>
