@@ -1,94 +1,66 @@
-# Frontend Developer Challenge 
+Campaign Management Dashboard (Hoisted at [https://campaign-management.netlify.app/](https://campaign-management.netlify.app/))
 
-Implement a web page, which contains 3 tabs (Upcoming Campaigns, Live Campaign, Past campaigns) as defined in
-the following mockup.
+To run this project, run the following commands after reaching the destination folder
 
-![alt text](http://cdn3.bluestacks.com/Interviews/Front-end/Dashboard%402x.png "Mockup")
+1. ### `npm i`
 
-* Each tab should show relevant data based on the status of campaign (upcoming, live, past).
-* The very first column should show the time diff from today to that campaign's date. (You can consider
-any date. If the date is in the future, you can show the number of days in the future. For example, **"23
-days ahead"**)
-* Add functionality to reschedule a campaign by opening a calendar on clicking the **Schedule again** icon. (Whatever date you select, should be shown in the first column named **"Date"**. The time diff shown against it should also be updated).
-* Once the date is changed of campaign. The campaign should move to the relevant Tab (Upcoming,Live,Past) , based on the date selected.
-* Clicking on **View Pricing**  in the row should show a modal with relevant information of the campaign. See the design in the Specs section below 
-* **Entire UI should be responsive.**. Please use your judgement on how it should look on mobile devices
-* UI should be same regarding color schemes and layout, button states etc. The assets are provided in the Specs section
-* Please use dummy json to populate the table. For reference you can see the **Need Help?** section below
-* You should use a modern frontend framework like **ReactJS**, **AngularJS**, **VueJS** etc to
-implement this.
-* It should support basic localization of strings in 2 languages. There should be a button to select between different languages. **(Optional bonus point)**
+2. ### `npm start`
 
-# Deliverables
+Open [http://localhost:5200](http://localhost:5200) to view it in the browser.
 
-Once you are done, please share with us:
-1. Source code link (GitHub, BitBucket, etc)
-2. URL where you have **deployed** the project. You need to deploy the WebApp on some cloud platform and provide us the URL for the same. **This step is very important** 
-3. Share the testcases for how you will test this Webpage in following format
+The server is hoisted in a separate domain ([https://bs-campaign.herokuapp.com](https://bs-campaign.herokuapp.com)).
 
-|Description | Execution steps | Expected output|
+Github Repo :[https://github.com/Gauravshrestha4/bs-server](https://github.com/Gauravshrestha4/bs-server) 
+
+### Libraries used for features/components
+For calender, react-datepicker is used.
+
+For localisation, there were 2 options that I stumbled upon:
+
+1.react-i18next- This is the popular one
+
+2.react-localisation - Less popular than the above 
+
+I used the latter one as it is half the bundle size than the former and it served the purpose and is easy to understand and use.
+
+### Things done apart from the task requirements(For performance):
+-  created a custom webpack config so that there is scope for more optimisation in the  future.
+-  Dyanamically imported components (datepicker and modal/popup). 
+-  Preloaded font css(roboto) to prevent render blocking stylesheet.
+-  Used web storage(local storage) to store and fetch data to minimize network calls.
+-  Added Redirection logic to serve all routes back to the app.
+-  Added Error Boundary. 
+
+The page speed score for Desktop-100 (All core web vitals i.e CLS,FID,LCP green).
+
+The page speed score for mobile-95+ (All core web vitals i.e CLS,FID,LCP green).
+
+
+
+
+
+### Test Cases for the Web Page
+
+
+
+Description | Execution steps | Expected output|
 |--- | --- | ---|
-|Localization |Select German language from Language selector dropdown | Header data,x days ago,x days ahead,Tabs text should be shown in german|
-|Campaign Date change | Select today's date in Past Campaign tab for any campaign | The campaign should be removed from Past campaign tab and appear in Live Campaign tab| 
+|UI check | Check the components and UI by going to the specified URL | UI should be as per the specs, all the components should pe present i.e tabs data table and the locale input
+|Relevance of Tabs | Click on each tab to see the data | Data should be relevant interms of date|| Date Picker UI | Click on schedule campaign from the actions tab | Datepicker should be visible
+|Reschedule feature | select any future/todays date in Past Campaign tab for any campaign | The campaign should be removed from Past campaign tab and appear in upcoming/live (respectively) Campaign tab, Date should be updated,Correct difference of days should be there| 
+|Reschedule to same category(live/upcoming/live) | select any past date in Past Campaign tab for any campaign | The campaign should not be removed from Past campaign tab , Date should be updated,Correct difference of days should be there| 
+|Date component toggle behaviour | Try to toggle Date component by clicking on it multiple times | Toggle functionality should work fine| 
+|View Pricing Feature | Click on View Pricing in the View Pricng Column of any row | A modal with relevant information of the campaign should open|
+|Pricing Modal Close button | Click close in the Pricing modal| Modal should get close properly|
+|Localization |Select German language from Language selector dropdown in the top right Header | Static Data,all the text should be in german |
+|UI in Localization state| check the ui after changing locale | Ui should not break after applying the locale | 
+|UI Responsiveness | Check on different mobile devices | UI should remain be clean(according to specs)|
 
-# Important things
 
-* Modularize your code well. Putting everything in one file is not good.
-* Use external DB/cache if required. Storing on local files and local variables is not desirable.
-* Put proper comments in code , so that we can understand the function usage etc..
 
-# Specs
 
-* UI Design specs.[Click Here](https://www.figma.com/file/RVDVlcKRF1gRGX7jUiu820/Front-End?node-id=0%3A1)
-* Assets. [Click Here](http://cdn3.bluestacks.com/Interviews/Front-end/Front-End.zip) 
 
-# Need Help?
 
-* Sample json to render the data
 
-```javascript
 
-{
-  "data": [{
-      "name": "Test Whatsapp",
-      "region": "US",
-      "createdOn": 1559807714999,
-      "price": "Price info of Test Whatsapp",
-      "csv": "Some CSV link for Whatsapp",
-      "report": "Some report link for Whatsapp",
-      "image_url":"Some image url of the campaign" 
-    },
-    {
-      "name": "Super Jewels Quest",
-      "region": "CA, FR",
-      "createdOn": 1559806715124,
-      "price": "Price info of Super Jewels Quest",
-      "csv": "Some CSV link for Super Jewels Quest",
-      "report": "Some report link for Super Jewels Ques",
-      "image_url":"Some image url of the campaign"
-    },
-    {
-      "name": "Mole Slayer",
-      "region": "FR",
-      "createdOn": 1559806711124,
-      "price": "Price info of Mole Slayer",
-      "csv": "Some CSV link for Mole Slayer",
-      "report": "Some report link for Mole Slayer",
-      "image_url":"Some image url of the campaign"
-    },
-    {
-      "name": "Mancala Mix",
-      "region": "JP",
-      "createdOn": 1559806680124,
-      "price": "Price info of Mancala Mix",
-      "csv": "Some CSV link for Mancala Mix",
-      "report": "Some report link for Mancala Mix",
-      "image_url":"Some image url of the campaign"
-    }
-  ]
-}
-```
-* How to create Repo in GitHub? [Click here](https://guides.github.com/activities/hello-world/) 
-
-* How to host your WebApp online? [Click here](https://gist.github.com/TylerFisher/6127328) or [Click here](https://pages.github.com/)
 
