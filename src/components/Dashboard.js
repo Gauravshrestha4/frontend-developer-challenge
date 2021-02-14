@@ -4,7 +4,7 @@ import TabContainer from './TabContainer';
 import MainTable from './MainTable';
 import { getJsonURL } from '../config/apiConfig'
 import {getRequest} from '../utils/apiCalls'
-import '../assets/dashboard.css';
+import '../assets/styles/dashboard.css';
 const DashBoard = ({localeString}) => {
     //using state to store the active tab from upcoming/live/past
     let [ activeTab, setActiveTab ] = useState('upcoming')

@@ -8,7 +8,7 @@ const PopUp = React.lazy(() => import('./PopUp'));
 const DatePicker = React.lazy(() => import('react-datepicker'));
 import popUp from '/public/assets/Bitmap1.png';
 
-import '../assets/MainTable.css'
+import '../assets/styles/MainTable.css'
 
 import file from '/public/assets/file.png'
 import calendar from '/public/assets/calendar.png'

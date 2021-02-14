@@ -1,6 +1,7 @@
 //importing required plugins
 const HTMLWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
+  
    module:{
     rules:[
      {
@@ -31,6 +32,7 @@ module.exports = {
      )
   ],
   devServer:{
-    port:5200
+    port: 5200,
+    historyApiFallback: true,
  }
 };

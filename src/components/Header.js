@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/header.css';
+import '../assets/styles/header.css';
 import PropTypes from 'prop-types';
 
 const Header = ({setLanguage}) => {

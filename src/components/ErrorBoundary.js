@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/errorpage.css'
+import '../assets/styles/errorpage.css'
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);

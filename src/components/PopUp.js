@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../assets/popup.css'
+import '../assets/styles/popup.css'
 import popUp from '/public/assets/Bitmap1.png';
 //declaring popUp_ functional component 
 const PopUp = ({ data, setModalOpen,locale }) => {
