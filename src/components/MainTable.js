@@ -14,6 +14,10 @@ import file from '/public/assets/file.png'
 import calendar from '/public/assets/calendar.png'
 import stats from '/public/assets/statistics-report.png';
 import Price from '/public/assets/Price.png';
+import mancalamix from '/public/assets/mancalamix.png';
+import pubg from '/public/assets/pubg.png';
+import superjewels from '/public/assets/superjewels.png';
+import moleslayer from '/public/assets/moleslayer.png';
 
 const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
     //initializing state variable 
@@ -47,7 +51,14 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
     const tableJSX = data.map((rowdata, i) => {
         const diffTime = (new Date(rowdata.createdOn) - new Date());
         const diffDays = Math.abs(diffTime) / (1000 * 60 * 60 * 24);
-        const diffDaysRounded = diffTime>0?Math.ceil(diffDays):Math.floor(diffDays);
+        const diffDaysRounded = diffTime > 0 ? Math.ceil(diffDays) : Math.floor(diffDays);
+        let campaignImage;
+        switch (rowdata.popUpIcon) {
+            case 'mancalamix': campaignImage = mancalamix; break;
+            case 'pubg': campaignImage = pubg; break;
+            case 'superjewels': campaignImage = superjewels; break;
+            case 'moleslayer': campaignImage = moleslayer; break;
+        }
         return (
             <tr id={"row"+i+1}>
                 <td >
@@ -59,7 +70,7 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
                 <td className="campaignColumn">
                     <img
                         className="rowCampaignIcon"
-                        src={popUp}
+                        src={campaignImage}
                     />
                     <div className="rowCampaignNameWrapper">
                         <div className="rowCampaignName">{rowdata.name}</div>

@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/styles/popup.css'
-import popUp from '/public/assets/Bitmap1.png';
+
+import mancalamix from '/public/assets/mancalamix.png';
+import pubg from '/public/assets/pubg.png';
+import superjewels from '/public/assets/superjewels.png';
+import moleslayer from '/public/assets/moleslayer.png';
 //declaring popUp_ functional component 
 const PopUp = ({ data, setModalOpen,locale }) => {
-  const { name, region, monthlyPrice, HalfYearlyPrice, yearlyPrice } = data;
-  
+  const { name, region, monthlyPrice, HalfYearlyPrice, yearlyPrice,popUpIcon } = data;
+  let popUpImage;
+  switch (popUpIcon) {
+    case 'mancalamix': popUpImage = mancalamix; break;
+    case 'pubg': popUpImage = pubg; break;
+    case 'superjewels': popUpImage = superjewels; break;
+    case 'moleslayer': popUpImage = moleslayer; break;
+  }
   return (
         <div className="popUp_Container">
           <div className="popUp_Inner">
                 <div className="popUp_upper">
                     <img
                     className="popUp_icon"
-                    src={popUp}
+                    src={popUpImage}
                 />
               
                 <div className="popUp_headingcontainer">
