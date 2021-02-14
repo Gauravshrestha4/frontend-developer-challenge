@@ -37,10 +37,7 @@ td span img{
     display: flex;
     margin-top: 15px;
 }
-.adjust-text {
-    position: relative;
-    top: -5px;
-}
+
 .emptyHeadline{
     margin: 80px auto 20px auto;
     border: 1px solid #F1F1F4;
@@ -79,11 +76,9 @@ td span img{
 }
 #row0{
     background-color: #F1F1F4;
-    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    /* identical to box height, or 150% */
     height: 48px;
     vertical-align: center;
     text-transform: uppercase;
@@ -94,10 +89,15 @@ td span img{
     height: 24px;
     width:18.84px;
     margin-right: 6px;
+    top: 3px;
+    position: relative;
 }
-span{
+.adjust-text{
     margin-right: 20px;
 }
+/* span{
+    margin-right: 20px;
+} */
 .rowCampaignNameWrapper{
   margin-left: 6px;
 }
@@ -106,8 +106,10 @@ span{
     width: 40px;
     background-size: contain;
     background-size: cover;
-  }
-  
+}
+
+
+
 @media only screen and (max-width: 786px) {
     .table-container{
         margin-top:12px;
@@ -119,11 +121,20 @@ span{
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      #cell0-2 {
+        min-width: 130px;
+    }
+    .adjust-text{
+        top:-12px;
+        position:relative;
+        margin-right: 20px;
+    }
+    .icon{
+        top: -7px;
+        position: relative;
+    }
 }
-.adjust-text {
-    position: relative;
-    top: -8px;
-}
+
 @media only screen and (max-width: 600px) {
 
     #cell0-0 {
