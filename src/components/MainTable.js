@@ -50,32 +50,41 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
         const diffDaysRounded = diffTime>0?Math.ceil(diffDays):Math.floor(diffDays);
         return (
             <tr id={"row"+i+1}>
-                <td id={"cell-" + i + '0'}>
+                <td >
                     <div  className="dark-text">{new Date(rowdata.createdOn).toDateString()}</div>
                     {activeTab == 'upcoming' && <div className="campaign-status">{diffDaysRounded} days ahead</div>}
                     {activeTab == 'past' && <div className="campaign-status">{diffDaysRounded} days before</div>}
                     {activeTab == 'live' && <div className="campaign-status">Ongoing</div>}
                 </td>
-                <td id={"cell-" + i + '1'} className="rowItem">
-                    
+                <td className="campaignColumn">
                     <img
                         className="rowCampaignIcon"
                         src={popUp}
                     />
                     <div className="rowCampaignNameWrapper">
-                    <div className="rowCampaignName">{rowdata.name}</div>
-                    <div  className="rowCampaignCountry">{rowdata.region}</div>
+                        <div className="rowCampaignName">{rowdata.name}</div>
+                        <div  className="rowCampaignCountry">{rowdata.region}</div>
                     </div>
                 </td>
-                <td id={"cell-" + i + '2'} onClick={() => handlePricingView(rowdata)} className="cursor dark-text">
-                    <span><img className="icon" src={Price}/>  {localeString.viewPricing}</span>
+                <td  onClick={() => handlePricingView(rowdata)} className="viewColumn">
+                    <div>
+                        <img className="icon" src={Price} /><span className="adjust-text">{localeString.viewPricing}</span>
+                    </div>
                 </td>
                 
-                <td id={"cell-" + i + '3'} className="actionColumn">
-                    <span><img className="icon" src={file}/> CSV</span>
-                    <span><img className="icon" src={stats} />{localeString.report}</span>
-                    <span onClick={() => toggleDatePicker(rowdata.id)} className="cursor"><img className="icon" src={calendar} />{localeString.schedule}</span>
-        
+                <td className="actionColumn">
+                    <div>
+                        <img className="icon" src={file} />
+                        <span className="adjust-text"> CSV</span>
+                    </div>
+                    <div>
+                        <img className="icon" src={stats} />
+                        <span className="adjust-text">{localeString.report}</span>
+                    </div>
+                    <div onClick={() => toggleDatePicker(rowdata.id)} className="cursor">
+                        <img className="icon" src={calendar} />
+                        <span className="adjust-text">{localeString.schedule}</span>
+                    </div>
                     {datePicker[ rowdata.id ] &&
                     <Suspense fallback={<div>Loading...</div>}>
                         <DatePicker selected={new Date()} onChange={date => updateData(date, rowdata)} />
