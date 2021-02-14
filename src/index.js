@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {render} from 'react-dom';
 import Header from './components/Header';
 import DashBoard from './components/Dashboard';
+import ErrorBoundary from './components/ErrorBoundary';
 import './assets/index.css'
 import { localeString } from './config/localisation'
 
@@ -17,4 +18,8 @@ const App = () => {
         </div>
     )
 };
-render(<App />,document.getElementById('root'));
+render(
+    <ErrorBoundary>
+        <App />
+    </ErrorBoundary>
+, document.getElementById('root'));

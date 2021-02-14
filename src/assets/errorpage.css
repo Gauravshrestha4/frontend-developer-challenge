@@ -1,0 +1,12 @@
+.errorPage{
+    background-color: #1F2640;
+    height: 100vh;
+    color: #fff;
+    font-family: Roboto;
+    font-style: bold;
+    font-size: 32px;
+    line-height: 50px;
+    text-align:center;
+    vertical-align: top;
+    fill: solid;
+}
