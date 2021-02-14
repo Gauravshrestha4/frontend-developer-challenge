@@ -1,19 +1,31 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import TabContainer from './TabContainer';
 import MainTable from './MainTable';
 import {mockData} from '../mockdata/mock';
 import '../assets/dashboard.css';
-
+import { getJsonURL } from '../config/apiConfig'
+import {getRequest} from '../utils/apiCalls'
 const DashBoard = ({localeString}) => {
     //using state to store the active tab from upcoming/live/past
     let [ activeTab, setActiveTab ] = useState('upcoming')
-    let [ tableData, setData ] = useState(mockData.data);
+    let [ tableData, setData ] = useState([]);
+
+    //adding api call to fetch json data on mount
+    useEffect(() => {
+        getRequest(getJsonURL).then(res => {
+            console.log('res is ', res)
+            setData(res.data.data)
+        })
+        //for clearing on unmount
+        return()=>{}
+    },[])
 
     let tabsData = {
         'upcoming': [],
         'past': [],
         'live':[]
     }
+    console.log('tableData', tableData);
     for (let i = 0; i < tableData.length; i++) {
         const diffTime = (new Date(tableData[ i ].createdOn) - new Date());
         const diffTimeAbs = Math.abs(diffTime);

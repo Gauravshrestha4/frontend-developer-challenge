@@ -1,6 +1,5 @@
 //importing required plugins
 const HTMLWebPackPlugin = require('html-webpack-plugin');
-
 module.exports = {
    module:{
     rules:[
