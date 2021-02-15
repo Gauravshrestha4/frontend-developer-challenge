@@ -60,7 +60,7 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
             case 'moleslayer': campaignImage = moleslayer; break;
         }
         return (
-            <tr id={"row"+i+1}>
+            <tr id={"row"+i+1} className="data-row">
                 <td >
                     <div  className="dark-text">{new Date(rowdata.createdOn).toDateString()}</div>
                     {activeTab == 'upcoming' && <div className="campaign-status">{diffDaysRounded} days ahead</div>}
