@@ -18,10 +18,13 @@ td span img{
 .actionColumn{
     display: flex;
     flex-wrap: wrap;
-    min-width: 200px;
+    min-width: 300px;
     position: relative;
     top: -15px;
     color:#7788A3;
+}
+.date-popup{
+    left: -25px !important;
 }
 .dark-text{
     font-style: normal;

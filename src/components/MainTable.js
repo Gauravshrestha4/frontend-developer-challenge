@@ -92,15 +92,16 @@ const MainTable = ({ data, setData, tableData, localeString, activeTab }) => {
                         <img className="icon" src={stats} />
                         <span className="adjust-text">{localeString.report}</span>
                     </div>
-                    <div onClick={() => toggleDatePicker(rowdata.id)} className="cursor">
-                        <img className="icon" src={calendar} />
+                    <div  className="cursor">
+                        <img onClick={() => toggleDatePicker(rowdata.id)} className="icon" src={calendar} />
                         <span className="adjust-text">{localeString.schedule}</span>
+                        {datePicker[ rowdata.id ] &&
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <DatePicker selected={new Date()} onChange={date => updateData(date, rowdata)} dateFormat="MMMM d, yyyy"
+                            popperPlacement="bottom-start"  popperClassName="date-popup" />
+                        </Suspense>
+                        }
                     </div>
-                    {datePicker[ rowdata.id ] &&
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <DatePicker selected={new Date()} onChange={date => updateData(date, rowdata)} />
-                    </Suspense>
-                    }
                 </td>
           </tr>
         )
